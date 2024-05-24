@@ -15,7 +15,6 @@ public class LogFilter implements Filter {
         HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;
         String requestURL = httpServletRequest.getRequestURI();
         String uuid = UUID.randomUUID().toString();
-
         try {
             log.info("REQUEST [{}][{}]", uuid, requestURL);
             filterChain.doFilter(servletRequest, servletResponse);
@@ -25,12 +24,10 @@ public class LogFilter implements Filter {
             log.info("RESPONSE [{}][{}]", uuid, requestURL);
         }
     }
-
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
         log.info("log filter init");
     }
-
     @Override
     public void destroy() {
         log.info("log filter destroy");
